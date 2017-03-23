@@ -219,14 +219,14 @@ var secondLevelFriends = ["Anne", "Harry", "Quinton"];
 var allUsers = ["Tom", "Dick", "Harry", "Anne", "Quinton", "Katie", "Mary"];
 
 function findPotentialFriends(existingFriends) {
-  return function() {
+  return function(name) {
     for (var i = 0; i < existingFriends.length; i++) {
-      if (existingFriends[i] === secondLevelFriends[i]) {
-        return true;
+      if (existingFriends[i] === name) {
+        return false;
       }
-      return false;
     }
 
+    return true;
   }
 }
 
@@ -242,8 +242,9 @@ var isNotAFriend = findPotentialFriends( friends );
 method, find all potential second level friends as well as potential friends
 from allUsers. */
 
-var potentialSecondLevelFriends = secondLevelFriends.filter(findPotentialFriends);
-var allPotentialFriends = allUsers.filter(findPotentialFriends);
+var potentialSecondLevelFriends = secondLevelFriends.filter(findPotentialFriends(friends));
+
+var allPotentialFriends = allUsers.filter(findPotentialFriends(friends));
 
 
 /******************************************************************************\
